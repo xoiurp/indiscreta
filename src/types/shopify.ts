@@ -100,7 +100,14 @@ export interface ShopifyCollection {
 export interface ShopifyCartLine {
   id: string;
   quantity: number;
-  merchandise: ShopifyProductVariant;
+  merchandise: ShopifyProductVariant & {
+    product?: {
+      id: string;
+      handle: string;
+      title: string;
+      featuredImage?: ShopifyImage;
+    };
+  };
   cost: {
     totalAmount: ShopifyMoney;
     subtotalAmount: ShopifyMoney;
