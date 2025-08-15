@@ -10,22 +10,23 @@ export const metadata: Metadata = {
 };
 
 interface ProductsPageProps {
-  searchParams: {
+  searchParams: Promise<{
     sort?: string;
     page?: string;
-  };
+  }>;
 }
 
 export default async function ProductsPage({ searchParams }: ProductsPageProps) {
-  const sortKey = searchParams.sort === 'price-low-high' ? 'PRICE' : 
-                  searchParams.sort === 'price-high-low' ? 'PRICE' :
-                  searchParams.sort === 'newest' ? 'CREATED_AT' :
-                  searchParams.sort === 'oldest' ? 'CREATED_AT' :
-                  searchParams.sort === 'title' ? 'TITLE' : 'CREATED_AT';
+  const resolvedSearchParams = await searchParams;
+  const sortKey = resolvedSearchParams.sort === 'price-low-high' ? 'PRICE' : 
+                  resolvedSearchParams.sort === 'price-high-low' ? 'PRICE' :
+                  resolvedSearchParams.sort === 'newest' ? 'CREATED_AT' :
+                  resolvedSearchParams.sort === 'oldest' ? 'CREATED_AT' :
+                  resolvedSearchParams.sort === 'title' ? 'TITLE' : 'CREATED_AT';
   
-  const reverse = searchParams.sort === 'price-high-low' || 
-                  searchParams.sort === 'oldest' || 
-                  searchParams.sort === 'title' ? true : false;
+  const reverse = resolvedSearchParams.sort === 'price-high-low' || 
+                  resolvedSearchParams.sort === 'oldest' || 
+                  resolvedSearchParams.sort === 'title' ? true : false;
 
   return (
     <div className="min-h-screen bg-background">

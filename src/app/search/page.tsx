@@ -10,15 +10,16 @@ export const metadata: Metadata = {
 };
 
 interface SearchPageProps {
-  searchParams: {
+  searchParams: Promise<{
     q?: string;
     page?: string;
-  };
+  }>;
 }
 
-export default function SearchPage({ searchParams }: SearchPageProps) {
-  const query = searchParams.q || '';
-  const page = parseInt(searchParams.page || '1', 10);
+export default async function SearchPage({ searchParams }: SearchPageProps) {
+  const resolvedSearchParams = await searchParams;
+  const query = resolvedSearchParams.q || '';
+  const page = parseInt(resolvedSearchParams.page || '1', 10);
 
   return (
     <div className="min-h-screen bg-background">
