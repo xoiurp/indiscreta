@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import { Search, Loader2 } from 'lucide-react';
 import {
@@ -109,7 +109,7 @@ export function SearchDialog({ open, onOpenChange }: SearchDialogProps) {
         <DialogHeader>
           <DialogTitle>Search Products</DialogTitle>
           <DialogDescription>
-            Find what you're looking for in our store
+            Find what you&apos;re looking for in our store
           </DialogDescription>
         </DialogHeader>
 

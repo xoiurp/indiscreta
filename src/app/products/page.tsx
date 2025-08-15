@@ -3,7 +3,6 @@ import { Metadata } from 'next';
 import { ProductGrid } from '@/components/products/product-grid';
 import { ProductGridSkeleton } from '@/components/products/product-grid-skeleton';
 import { SiteHeader } from '@/components/layout/site-header';
-import { getProducts } from '@/lib/shopify/services';
 
 export const metadata: Metadata = {
   title: 'All Products - Indiscreta Shop',

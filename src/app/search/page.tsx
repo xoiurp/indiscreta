@@ -31,7 +31,7 @@ export default function SearchPage({ searchParams }: SearchPageProps) {
           </h1>
           {query && (
             <p className="text-muted-foreground mt-2">
-              Results for "{query}"
+              Results for &ldquo;{query}&rdquo;
             </p>
           )}
         </div>

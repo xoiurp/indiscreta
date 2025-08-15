@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { Star, ShoppingCart, Heart, Share, Truck, Shield, RotateCcw } from 'lucide-react';
+import { ShoppingCart, Heart, Share, Truck, Shield, RotateCcw } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Separator } from '@/components/ui/separator';

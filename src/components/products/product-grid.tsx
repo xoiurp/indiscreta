@@ -86,7 +86,7 @@ export function ProductGrid({
         <AlertCircle className="mx-auto h-12 w-12 text-muted-foreground" />
         <h3 className="mt-4 text-lg font-semibold">No products found</h3>
         <p className="mt-2 text-muted-foreground">
-          We couldn't find any products at the moment. Please try again later.
+          We couldn&apos;t find any products at the moment. Please try again later.
         </p>
       </div>
     );

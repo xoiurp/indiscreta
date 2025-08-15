@@ -9,7 +9,7 @@ interface SearchResultsProps {
   page?: number;
 }
 
-export async function SearchResults({ query, page = 1 }: SearchResultsProps) {
+export async function SearchResults({ query }: SearchResultsProps) {
   if (!query.trim()) {
     return (
       <div className="text-center py-12">
@@ -37,7 +37,7 @@ export async function SearchResults({ query, page = 1 }: SearchResultsProps) {
           <Search className="mx-auto h-12 w-12 text-muted-foreground" />
           <h3 className="mt-4 text-lg font-semibold">No products found</h3>
           <p className="mt-2 text-muted-foreground">
-            We couldn't find any products matching "{query}". Try using different keywords or browse our categories.
+            We couldn&apos;t find any products matching &ldquo;{query}&rdquo;. Try using different keywords or browse our categories.
           </p>
           <div className="mt-6 space-x-4">
             <Button asChild>
@@ -55,7 +55,7 @@ export async function SearchResults({ query, page = 1 }: SearchResultsProps) {
       <div className="space-y-6">
         <div className="flex items-center justify-between">
           <p className="text-sm text-muted-foreground">
-            Found {response.products.length} product{response.products.length !== 1 ? 's' : ''} for "{query}"
+            Found {response.products.length} product{response.products.length !== 1 ? 's' : ''} for &ldquo;{query}&rdquo;
           </p>
         </div>
 

@@ -16,7 +16,7 @@ export async function CollectionGrid() {
           <AlertCircle className="mx-auto h-12 w-12 text-muted-foreground" />
           <h3 className="mt-4 text-lg font-semibold">No collections found</h3>
           <p className="mt-2 text-muted-foreground">
-            We couldn't find any collections at the moment.
+            We couldn&apos;t find any collections at the moment.
           </p>
         </div>
       );
