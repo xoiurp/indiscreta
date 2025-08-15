@@ -37,10 +37,10 @@ export const adminClient = new GraphQLClient(
 );
 
 // Generic request wrapper with error handling
-export async function shopifyRequest<T = any>(
+export async function shopifyRequest<T = unknown>(
   client: GraphQLClient,
   query: string,
-  variables?: Record<string, any>
+  variables?: Record<string, unknown>
 ): Promise<T> {
   try {
     const data = await client.request<T>(query, variables);
@@ -52,17 +52,17 @@ export async function shopifyRequest<T = any>(
 }
 
 // Storefront API request wrapper
-export async function storefrontRequest<T = any>(
+export async function storefrontRequest<T = unknown>(
   query: string,
-  variables?: Record<string, any>
+  variables?: Record<string, unknown>
 ): Promise<T> {
   return shopifyRequest<T>(storefrontClient, query, variables);
 }
 
 // Admin API request wrapper  
-export async function adminRequest<T = any>(
+export async function adminRequest<T = unknown>(
   query: string,
-  variables?: Record<string, any>
+  variables?: Record<string, unknown>
 ): Promise<T> {
   return shopifyRequest<T>(adminClient, query, variables);
 }

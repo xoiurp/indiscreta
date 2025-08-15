@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useReducer, useEffect } from 'react';
 import { toast } from 'sonner';
-import type { ShopifyCart, ShopifyCartLine, CartLineInput } from '@/types/shopify';
+import type { ShopifyCart, CartLineInput } from '@/types/shopify';
 import {
   getCart,
   createCart,

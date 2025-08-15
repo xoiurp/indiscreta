@@ -1,5 +1,12 @@
 // Shopify Storefront API Types
 
+export interface PageInfo {
+  hasNextPage: boolean;
+  hasPreviousPage: boolean;
+  startCursor?: string;
+  endCursor?: string;
+}
+
 export interface ShopifyImage {
   id: string;
   url: string;
@@ -130,7 +137,7 @@ export interface ShopifyCart {
     };
     email?: string;
     phone?: string;
-    deliveryAddressPreferences?: any[];
+    deliveryAddressPreferences?: unknown[];
   };
   attributes: {
     key: string;

@@ -31,8 +31,8 @@ import type {
   RemoveFromCartResponse,
   CartLineInput,
   CartLineUpdateInput,
-  ProductFilter,
   ProductSortKey,
+  PageInfo,
 } from '@/types/shopify';
 
 // Product Services
@@ -87,7 +87,7 @@ export async function searchProducts(options: {
   after?: string;
   sortKey?: ProductSortKey['key'];
   reverse?: boolean;
-}): Promise<{ products: ShopifyProduct[]; pageInfo: any }> {
+}): Promise<{ products: ShopifyProduct[]; pageInfo: PageInfo }> {
   const {
     query,
     first = 20,
@@ -99,7 +99,7 @@ export async function searchProducts(options: {
   const response = await storefrontRequest<{
     search: {
       edges: { node: ShopifyProduct }[];
-      pageInfo: any;
+      pageInfo: PageInfo;
     };
   }>(SEARCH_PRODUCTS_QUERY, {
     query,
@@ -260,7 +260,7 @@ export async function updateCartBuyerIdentity(
     countryCode?: string;
     email?: string;
     phone?: string;
-    deliveryAddressPreferences?: any[];
+    deliveryAddressPreferences?: unknown[];
   }
 ): Promise<ShopifyCart | null> {
   const response = await storefrontRequest<{
@@ -315,8 +315,8 @@ export async function getShopInfo(): Promise<{
     name: string;
     description: string;
     primaryDomain: { url: string; host: string };
-    brand?: any;
-    paymentSettings?: any;
+    brand?: unknown;
+    paymentSettings?: unknown;
   };
 }> {
   return storefrontRequest<{
@@ -324,8 +324,8 @@ export async function getShopInfo(): Promise<{
       name: string;
       description: string;
       primaryDomain: { url: string; host: string };
-      brand?: any;
-      paymentSettings?: any;
+      brand?: unknown;
+      paymentSettings?: unknown;
     };
   }>(GET_SHOP_INFO_QUERY);
 }

@@ -118,41 +118,6 @@ const COLLECTION_FRAGMENT = gql`
   }
 `;
 
-const CART_LINE_FRAGMENT = gql`
-  fragment CartLineFragment on CartLine {
-    id
-    quantity
-    cost {
-      totalAmount {
-        ...MoneyFragment
-      }
-      subtotalAmount {
-        ...MoneyFragment
-      }
-      compareAtAmountPerQuantity {
-        ...MoneyFragment
-      }
-    }
-    merchandise {
-      ... on ProductVariant {
-        ...ProductVariantFragment
-        product {
-          id
-          handle
-          title
-          featuredImage {
-            ...ImageFragment
-          }
-        }
-      }
-    }
-    attributes {
-      key
-      value
-    }
-  }
-`;
-
 const CART_FRAGMENT = gql`
   fragment CartFragment on Cart {
     id
@@ -161,7 +126,36 @@ const CART_FRAGMENT = gql`
     lines(first: 250) {
       edges {
         node {
-          ...CartLineFragment
+          id
+          quantity
+          cost {
+            totalAmount {
+              ...MoneyFragment
+            }
+            subtotalAmount {
+              ...MoneyFragment
+            }
+            compareAtAmountPerQuantity {
+              ...MoneyFragment
+            }
+          }
+          merchandise {
+            ... on ProductVariant {
+              ...ProductVariantFragment
+              product {
+                id
+                handle
+                title
+                featuredImage {
+                  ...ImageFragment
+                }
+              }
+            }
+          }
+          attributes {
+            key
+            value
+          }
         }
       }
     }
