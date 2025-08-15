@@ -368,6 +368,9 @@ export const GET_CART_QUERY = gql`
       ...CartFragment
     }
   }
+  ${IMAGE_FRAGMENT}
+  ${MONEY_FRAGMENT}
+  ${PRODUCT_VARIANT_FRAGMENT}
   ${CART_FRAGMENT}
 `;
 
@@ -376,7 +379,131 @@ export const CREATE_CART_MUTATION = gql`
   mutation CreateCart($input: CartInput!) {
     cartCreate(input: $input) {
       cart {
-        ...CartFragment
+        id
+        checkoutUrl
+        totalQuantity
+        lines(first: 250) {
+          edges {
+            node {
+              id
+              quantity
+              cost {
+                totalAmount {
+                  amount
+                  currencyCode
+                }
+                subtotalAmount {
+                  amount
+                  currencyCode
+                }
+                compareAtAmountPerQuantity {
+                  amount
+                  currencyCode
+                }
+              }
+              merchandise {
+                ... on ProductVariant {
+                  id
+                  title
+                  price {
+                    amount
+                    currencyCode
+                  }
+                  compareAtPrice {
+                    amount
+                    currencyCode
+                  }
+                  availableForSale
+                  quantityAvailable
+                  selectedOptions {
+                    name
+                    value
+                  }
+                  image {
+                    id
+                    url
+                    altText
+                    width
+                    height
+                  }
+                  product {
+                    id
+                    handle
+                    title
+                    featuredImage {
+                      id
+                      url
+                      altText
+                      width
+                      height
+                    }
+                  }
+                }
+              }
+              attributes {
+                key
+                value
+              }
+            }
+          }
+        }
+        cost {
+          totalAmount {
+            amount
+            currencyCode
+          }
+          subtotalAmount {
+            amount
+            currencyCode
+          }
+          totalTaxAmount {
+            amount
+            currencyCode
+          }
+          totalDutyAmount {
+            amount
+            currencyCode
+          }
+        }
+        buyerIdentity {
+          countryCode
+          customer {
+            id
+            email
+            firstName
+            lastName
+          }
+          email
+          phone
+        }
+        attributes {
+          key
+          value
+        }
+        discountCodes {
+          code
+          applicable
+        }
+        estimatedCost {
+          totalAmount {
+            amount
+            currencyCode
+          }
+          subtotalAmount {
+            amount
+            currencyCode
+          }
+          totalTaxAmount {
+            amount
+            currencyCode
+          }
+          totalDutyAmount {
+            amount
+            currencyCode
+          }
+        }
+        createdAt
+        updatedAt
       }
       userErrors {
         field
@@ -384,7 +511,6 @@ export const CREATE_CART_MUTATION = gql`
       }
     }
   }
-  ${CART_FRAGMENT}
 `;
 
 export const ADD_TO_CART_MUTATION = gql`
@@ -399,6 +525,9 @@ export const ADD_TO_CART_MUTATION = gql`
       }
     }
   }
+  ${IMAGE_FRAGMENT}
+  ${MONEY_FRAGMENT}
+  ${PRODUCT_VARIANT_FRAGMENT}
   ${CART_FRAGMENT}
 `;
 
@@ -414,6 +543,9 @@ export const UPDATE_CART_MUTATION = gql`
       }
     }
   }
+  ${IMAGE_FRAGMENT}
+  ${MONEY_FRAGMENT}
+  ${PRODUCT_VARIANT_FRAGMENT}
   ${CART_FRAGMENT}
 `;
 
@@ -429,6 +561,9 @@ export const REMOVE_FROM_CART_MUTATION = gql`
       }
     }
   }
+  ${IMAGE_FRAGMENT}
+  ${MONEY_FRAGMENT}
+  ${PRODUCT_VARIANT_FRAGMENT}
   ${CART_FRAGMENT}
 `;
 
@@ -444,6 +579,9 @@ export const UPDATE_CART_BUYER_IDENTITY_MUTATION = gql`
       }
     }
   }
+  ${IMAGE_FRAGMENT}
+  ${MONEY_FRAGMENT}
+  ${PRODUCT_VARIANT_FRAGMENT}
   ${CART_FRAGMENT}
 `;
 
@@ -459,6 +597,9 @@ export const APPLY_DISCOUNT_CODE_MUTATION = gql`
       }
     }
   }
+  ${IMAGE_FRAGMENT}
+  ${MONEY_FRAGMENT}
+  ${PRODUCT_VARIANT_FRAGMENT}
   ${CART_FRAGMENT}
 `;
 
