@@ -218,7 +218,7 @@ export function ProductDetails({ product, images, variants }: ProductDetailsProp
                   variant="ghost"
                   size="sm"
                   onClick={() => setQuantity(quantity + 1)}
-                  disabled={!isInStock || (selectedVariant && quantity >= selectedVariant.quantityAvailable)}
+                  disabled={!isInStock || (selectedVariant ? quantity >= selectedVariant.quantityAvailable : false)}
                 >
                   +
                 </Button>
