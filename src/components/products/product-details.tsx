@@ -70,8 +70,8 @@ export function ProductDetails({ product, images, variants }: ProductDetailsProp
   };
 
   const price = selectedVariant ? formatPrice(selectedVariant.price) : formatPrice(product.priceRange.minVariantPrice);
-  const compareAtPrice = selectedVariant?.compareAtPrice?.amount !== '0.0' 
-    ? formatPrice(selectedVariant.compareAtPrice!)
+  const compareAtPrice = selectedVariant?.compareAtPrice?.amount !== '0.0' && selectedVariant?.compareAtPrice
+    ? formatPrice(selectedVariant.compareAtPrice)
     : null;
 
   const isOnSale = compareAtPrice !== null;
