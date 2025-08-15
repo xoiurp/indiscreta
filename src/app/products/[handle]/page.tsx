@@ -9,13 +9,14 @@ import { Skeleton } from '@/components/ui/skeleton';
 import { getProduct } from '@/lib/shopify/services';
 
 interface ProductPageProps {
-  params: {
+  params: Promise<{
     handle: string;
-  };
+  }>;
 }
 
 export async function generateMetadata({ params }: ProductPageProps): Promise<Metadata> {
-  const product = await getProduct(params.handle);
+  const { handle } = await params;
+  const product = await getProduct(handle);
 
   if (!product) {
     return {
@@ -43,7 +44,8 @@ export async function generateMetadata({ params }: ProductPageProps): Promise<Me
 }
 
 export default async function ProductPage({ params }: ProductPageProps) {
-  const product = await getProduct(params.handle);
+  const { handle } = await params;
+  const product = await getProduct(handle);
 
   if (!product) {
     notFound();
